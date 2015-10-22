@@ -7,11 +7,15 @@ else
 ifeq ($(BOARD),TEENSY)
 include config-teensy.mk
 else
+ifeq ($(BOARD),TEENSY646)
+include config-teensy646.mk
+else
 ifeq ($(BOARD),LEONARDPIRATE)
 include config-leonard_pirate.mk
 else
 # Default to arduino
 include config-arduino.mk
+endif
 endif
 endif
 endif
@@ -57,6 +61,7 @@ CFLAGS += -fshort-enums
 CFLAGS += -finline-limit=3 
 CFLAGS += -fno-inline-small-functions 
 CFLAGS += -Wall -Werror
+CFLAGS += -std=c99
 
 CFLAGS += -DUSBMODE_DEFAULT=USBMODE_CDC
 
